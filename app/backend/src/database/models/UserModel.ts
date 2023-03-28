@@ -16,7 +16,7 @@ Team.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  userName: {
+  username: {
     type: STRING(255),
     allowNull: false,
   },

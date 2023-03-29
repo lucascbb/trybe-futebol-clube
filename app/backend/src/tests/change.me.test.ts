@@ -1,41 +1,33 @@
-// import * as sinon from 'sinon';
-// import * as chai from 'chai';
-// // @ts-ignore
-// import chaiHttp = require('chai-http');
+import * as sinon from 'sinon';
+import * as chai from 'chai';
+// @ts-ignore
+import chaiHttp = require('chai-http');
 
-// import { app } from '../app';
-// import Matches from '../database/models/MatchesModel';
-// import Teams from '../database/models/TeamsModel';
-// import User from '../database/models/UserModel';
+import { app } from '../app';
+import Matches from '../database/models/MatchesModel';
+import Teams from '../database/models/TeamsModel';
+import User from '../database/models/UserModel';
 
-// import { Response } from 'superagent';
+import { teamsMock } from './mocks/teamsMock';
+import { teamIdMock } from './mocks/teamsMock'
 
-// chai.use(chaiHttp);
+import { Response } from 'superagent';
 
-// const { expect } = chai;
+chai.use(chaiHttp);
 
-// describe('Seu teste', () => {
-//   let chaiHttpResponse: Response;
+const { expect } = chai;
 
-  // before(async () => {
-  //   sinon
-  //     .stub(Teams, "findOne")
-  //     .resolves({...<Seu mock>} as Teams);
-  // });
+describe('Usando o método GET em /teams', function () {
+  it('Retorna a quantidade total de teams', async function () {
+    const response = await chai.request(app).get('/teams');
 
-  // after(()=>{
-  //   (Teams.findOne as sinon.SinonStub).restore();
-  // })
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.deep.equal(teamsMock);
+});
+it('Retorna a team baseado no ID', async function () {
+  const response = await chai.request(app).get('/teams/1');
 
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
-
-  //   expect(...)
-  // });
-
-  // it('Seu sub-teste', () => {
-  //   expect(false).to.be.eq(true);
-  // });
-// });
+  expect(response.status).to.be.equal(200);
+  expect(response.body).to.deep.equal(teamIdMock);
+});
+});

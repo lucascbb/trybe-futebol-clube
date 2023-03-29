@@ -1,34 +1,30 @@
-import * as sinon from 'sinon';
-import * as chai from 'chai';
-// @ts-ignore
-import chaiHttp = require('chai-http');
+// import * as sinon from 'sinon';
+// import * as chai from 'chai';
+// // @ts-ignore
+// import chaiHttp = require('chai-http');
 
-import { app } from '../app';
-import Example from '../database/models/ExampleModel';
+// import { app } from '../app';
+// import Matches from '../database/models/MatchesModel';
+// import Teams from '../database/models/TeamsModel';
+// import User from '../database/models/UserModel';
 
-import { Response } from 'superagent';
+// import { Response } from 'superagent';
 
-chai.use(chaiHttp);
+// chai.use(chaiHttp);
 
-const { expect } = chai;
+// const { expect } = chai;
 
-describe('Seu teste', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
-
-  // let chaiHttpResponse: Response;
+// describe('Seu teste', () => {
+//   let chaiHttpResponse: Response;
 
   // before(async () => {
   //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
+  //     .stub(Teams, "findOne")
+  //     .resolves({...<Seu mock>} as Teams);
   // });
 
   // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
+  //   (Teams.findOne as sinon.SinonStub).restore();
   // })
 
   // it('...', async () => {
@@ -39,7 +35,7 @@ describe('Seu teste', () => {
   //   expect(...)
   // });
 
-  it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
-  });
-});
+  // it('Seu sub-teste', () => {
+  //   expect(false).to.be.eq(true);
+  // });
+// });

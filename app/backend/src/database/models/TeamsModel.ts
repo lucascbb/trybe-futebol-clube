@@ -1,7 +1,7 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
-class Teams extends Model {
+export default class Teams extends Model {
   declare id: number;
   declare teamName: string;
 }
@@ -14,14 +14,12 @@ Teams.init({
     autoIncrement: true,
   },
   teamName: {
-    type: STRING(255),
+    type: STRING,
     allowNull: false,
   },
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'team',
+  modelName: 'Teams',
   timestamps: false,
 });
-
-export default Teams;

@@ -1,4 +1,4 @@
-import connection from './connection';
+import connection from './connection.ts_';
 
 const getTeams = async () => {
   const sql = 'SELECT id, team_name as teamName FROM TRYBE_FUTEBOL_CLUBE.teams';

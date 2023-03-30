@@ -16,8 +16,7 @@ export default class TeamsController {
     if (validate) { return res.status(validate.status).json({ message: validate.message }); }
 
     const login = await this.userService.getLogin(email);
-
-    if (!login) { return res.status(400).json({ message: 'All fields must be filled' }); }
+    if (!login) { return res.status(401).json({ message: 'Invalid email or password' }); }
 
     const senhaCorreta = bcrypt.compareSync(password, login.password);
 

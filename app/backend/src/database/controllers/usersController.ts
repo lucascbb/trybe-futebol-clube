@@ -19,9 +19,9 @@ export default class TeamsController {
     if (!login) { return res.status(401).json({ message: 'Invalid email or password' }); }
 
     const senhaCorreta = bcrypt.compareSync(password, login.password);
+    if (!senhaCorreta) { return res.status(401).json({ message: 'Invalid email or password' }); }
 
     const token = newToken(login.id, login.role);
-
     if (senhaCorreta) { return res.status(200).json({ token }); }
   }
 }

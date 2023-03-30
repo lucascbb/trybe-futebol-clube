@@ -1,4 +1,4 @@
-// import * as sinon from 'sinon';
+import * as sinon from 'sinon';
 import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Usando o método GET em /teams', function () {
+describe('Usando o método GET em /teams & /teams/:id', function () {
   it('Retorna a quantidade total de teams', async function () {
     const response = await chai.request(app).get('/teams');
 
@@ -26,3 +26,16 @@ it('Retorna a team baseado no ID', async function () {
   expect(response.body).to.deep.equal(teamIdMock);
 });
 });
+describe('Usando o método POST em /login', function () {
+  it('Deve retornar uma mensagem de erro caso nao tenha campo email ou password', async function () {
+    const response = await chai.request(app)
+      .post('/login')
+      .send({
+        email: 'user@example.com'
+      });
+
+    expect(response.status).to.be.equal(400);
+    expect(response.body).to.have.property("message", 'All fields must be filled');
+  });
+});
+

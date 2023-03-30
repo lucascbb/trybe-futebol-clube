@@ -3,7 +3,7 @@ import db from '.';
 
 export default class Team extends Model {
   declare id: number;
-  declare userName: string;
+  declare username: string;
   declare role: string;
   declare email: string;
   declare password: string;
@@ -17,24 +17,24 @@ Team.init({
     autoIncrement: true,
   },
   username: {
-    type: STRING(255),
+    type: STRING,
     allowNull: false,
   },
   role: {
-    type: STRING(255),
+    type: STRING,
     allowNull: false,
   },
   email: {
-    type: STRING(255),
+    type: STRING,
     allowNull: false,
   },
   password: {
-    type: STRING(255),
+    type: STRING,
     allowNull: false,
   },
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'team',
+  modelName: 'users',
   timestamps: false,
 });

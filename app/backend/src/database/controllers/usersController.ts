@@ -1,19 +1,23 @@
 import { Request, Response } from 'express';
-import TeamsService from '../services/teamsService';
+import { hash } from 'bcryptjs';
+import UserService from '../services/usersService';
 
 export default class TeamsController {
-  constructor(private teamService: TeamsService) {
-    this.teamService = teamService;
+  constructor(private userService: UserService) {
+    this.userService = userService;
   }
 
-  async getAllTeams(req: Request, res: Response): Promise<void> {
-    const teams = await this.teamService.getAllTeams();
-    res.status(200).json(teams);
-  }
+  async getLogin(req: Request, res: Response): Promise<object | void> {
+    const { email, password } = req.body;
 
-  async getTeam(req: Request, res: Response): Promise<void> {
-    const { id } = req.params;
-    const team = await this.teamService.getTeam(Number(id));
-    res.status(200).json(team);
+    if (!email || !password) {
+      return res.status(400).json({ message: 'All fields must be filled' });
+    }
+
+    const passwordHash = await hash(password, 8);
+
+    await this.userService.getLogin(email, password);
+
+    res.status(200).json(passwordHash);
   }
 }

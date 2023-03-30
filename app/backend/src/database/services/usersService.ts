@@ -7,7 +7,6 @@ export default class UsersService {
 
   async getLogin(email: string): Promise<ILogin> {
     const login = await this.userModel.findOne({
-      // attributes: ['id', 'username', 'role', 'email'],
       where: { email },
     });
 

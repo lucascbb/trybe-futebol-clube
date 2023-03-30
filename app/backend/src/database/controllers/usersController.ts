@@ -15,11 +15,6 @@ export default class TeamsController {
     const validate = validateLogin(email, password);
     if (validate) { return res.status(validate.status).json({ message: validate.message }); }
 
-    const regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.com$/;
-    if (!regex.test(email)) {
-      return res.status(401).json({ message: 'Invalid email or password' });
-    }
-
     const login = await this.userService.getLogin(email);
 
     if (!login) { return res.status(400).json({ message: 'All fields must be filled' }); }

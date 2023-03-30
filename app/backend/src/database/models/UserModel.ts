@@ -1,7 +1,7 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
-class Team extends Model {
+export default class Team extends Model {
   declare id: number;
   declare userName: string;
   declare role: string;
@@ -38,5 +38,3 @@ Team.init({
   modelName: 'team',
   timestamps: false,
 });
-
-export default Team;

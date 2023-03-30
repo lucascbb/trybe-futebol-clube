@@ -16,6 +16,9 @@ export default class TeamsController {
     }
 
     const login = await this.userService.getLogin(email);
+
+    if (!login) { return res.status(400).json({ message: 'All fields must be filled' }); }
+
     const senhaCorreta = bcrypt.compareSync(password, login.password);
 
     const token = newToken(login.id, login.role);

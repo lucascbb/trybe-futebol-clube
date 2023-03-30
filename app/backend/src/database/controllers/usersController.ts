@@ -22,6 +22,6 @@ export default class TeamsController {
     if (!senhaCorreta) { return res.status(401).json({ message: 'Invalid email or password' }); }
 
     const token = newToken(login.id, login.role);
-    if (senhaCorreta) { return res.status(200).json({ token }); }
+    return res.status(200).json({ token });
   }
 }

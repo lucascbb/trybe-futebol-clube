@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { hash } from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
+import { newToken } from '../../utils/token.validate';
 import UserService from '../services/usersService';
 
 export default class TeamsController {
@@ -14,10 +15,11 @@ export default class TeamsController {
       return res.status(400).json({ message: 'All fields must be filled' });
     }
 
-    const passwordHash = await hash(password, 8);
+    const login = await this.userService.getLogin(email);
+    const senhaCorreta = bcrypt.compareSync(password, login.password);
 
-    await this.userService.getLogin(email, password);
+    const token = newToken(login.id, login.role);
 
-    res.status(200).json(passwordHash);
+    if (senhaCorreta) { return res.status(200).json({ token }); }
   }
 }

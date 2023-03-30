@@ -1,4 +1,5 @@
 import * as chai from 'chai';
+import * as sinon from 'sinon';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
@@ -19,6 +20,7 @@ describe('Usando o método POST em /login', function () {
     expect(response.status).to.be.equal(400);
     expect(response.body).to.have.property("message", 'All fields must be filled');
   });
+
   it('Deve retornar uma mensagem de erro caso campo email seja invalido', async function () {
     const response = await chai.request(app)
       .post('/login')
@@ -30,6 +32,7 @@ describe('Usando o método POST em /login', function () {
     expect(response.status).to.be.equal(401);
     expect(response.body).to.have.property("message", 'Invalid email or password');
   });
+
   it('Deve retornar uma mensagem de erro caso campo senha seja invalido', async function () {
     const response = await chai.request(app)
       .post('/login')
@@ -40,6 +43,7 @@ describe('Usando o método POST em /login', function () {
     expect(response.status).to.be.equal(401);
     expect(response.body).to.have.property("message", 'Invalid email or password');
   });
+
   it('Deve retornar uma mensagem de erro caso campo email nao tenha no banco', async function () {
     const response = await chai.request(app)
       .post('/login')

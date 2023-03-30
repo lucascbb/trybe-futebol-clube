@@ -12,4 +12,6 @@ router.get('/', (req: Request, res: Response) => teamsController.getAllTeams(req
 
 router.get('/:id', (req: Request, res: Response) => teamsController.getTeam(req, res));
 
+router.get('/role', (req: Request, res: Response) => teamsController.getTeam(req, res));
+
 export default router;

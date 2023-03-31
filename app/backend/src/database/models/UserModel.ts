@@ -1,35 +1,35 @@
-import { Model, INTEGER, STRING } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import db from '.';
 
-export default class Team extends Model {
-  declare id: number;
-  declare username: string;
-  declare role: string;
-  declare email: string;
-  declare password: string;
+export default class Users extends Model {
+  public id!: number;
+  public username!: string;
+  public role!: string;
+  public email!: string;
+  public password!: string;
 }
 
-Team.init({
+Users.init({
   id: {
-    type: INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
   username: {
-    type: STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   role: {
-    type: STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   email: {
-    type: STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   password: {
-    type: STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
 }, {

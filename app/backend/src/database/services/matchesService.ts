@@ -8,19 +8,8 @@ export default class MatchesService {
 
   async getAllMatches(): Promise<IMatches[]> {
     const matches = await this.matchesModel.findAll({
-      include: [{
-        model: Teams,
-        as: 'homeTeam',
-        required: true,
-        attributes: ['teamName'],
-      },
-      {
-        model: Teams,
-        as: 'awayTeam',
-        required: true,
-        attributes: ['teamName'],
-      },
-      ],
+      include: [{ model: Teams, as: 'homeTeam', required: true, attributes: ['teamName'] },
+        { model: Teams, as: 'awayTeam', required: true, attributes: ['teamName'] }],
     });
     return matches as IMatches[];
   }

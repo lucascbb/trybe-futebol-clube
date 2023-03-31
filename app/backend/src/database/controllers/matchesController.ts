@@ -7,7 +7,7 @@ export default class MatchesController {
     this.matchService = matchService;
   }
 
-  async getAllMatches(req: Request, res: Response): Promise<IMatches[]> {
+  async getAllMatches(req: Request, res: Response): Promise<IMatches[] | object> {
     const { inProgress } = req.query;
 
     const matches = await this.matchService.getAllMatches();

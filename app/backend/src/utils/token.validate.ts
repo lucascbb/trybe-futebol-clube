@@ -9,5 +9,5 @@ export const newToken = (id: number, role: string) => jwt.sign({ id, role }, sec
 export const validateToken = (token:string | any) => {
   try {
     return jwt.verify(token, secret);
-  } catch (error) { return 'Token must be a valid token'; }
+  } catch (error) { return false; }
 };

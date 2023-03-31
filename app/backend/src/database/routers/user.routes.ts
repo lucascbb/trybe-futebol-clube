@@ -18,7 +18,8 @@ const authsController = new AuthController(authService);
 router.get(
   '/role',
   middlewareToken,
-  (req: Request, res: Response) => authsController.authLogin(req, res),
+  // (req: Request, res: Response) => authsController.authLogin(req, res),
+  authsController.authLogin.bind(authsController),
 );
 
 export default router;

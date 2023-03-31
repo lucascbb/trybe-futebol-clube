@@ -8,6 +8,6 @@ const router = Router();
 const matchesService = new MatcheService(MatchModel);
 const matchesController = new MatchController(matchesService);
 
-router.get('/', (req: Request, res: Response) => matchesController.getAllTeams(req, res));
+router.get('/matches', (req: Request, res: Response) => matchesController.getAllMatches(req, res));
 
 export default router;

@@ -18,7 +18,7 @@ class App {
 
     this.app.use('/login', usersRoutes);
 
-    this.app.use('/matches', matchesRoutes);
+    this.app.use('', matchesRoutes);
   }
 
   private config():void {

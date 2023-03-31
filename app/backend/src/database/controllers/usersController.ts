@@ -4,7 +4,7 @@ import { newToken } from '../../utils/token.validate';
 import UserService from '../services/usersService';
 import { validateLogin } from '../validations/loginValidate';
 
-export default class TeamsController {
+export default class UsersController {
   constructor(private userService: UserService) {
     this.userService = userService;
   }

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { validateToken } from '../../utils/token.validate';
 
-function meuMiddleware(req: Request, res: Response, next: NextFunction): any {
+function tokeMiddleware(req: Request, res: Response, next: NextFunction): any {
   const { authorization } = req.headers;
 
   if (!authorization) { return res.status(401).json({ message: 'Token not found' }); }
@@ -12,4 +12,4 @@ function meuMiddleware(req: Request, res: Response, next: NextFunction): any {
   next();
 }
 
-export default meuMiddleware;
+export default tokeMiddleware;

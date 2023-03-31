@@ -25,7 +25,7 @@ export default class MatchesService {
     return matches as IMatches[];
   }
 
-  async getProgressMatch(progress: any): Promise<IMatches[] | undefined> {
+  async getProgressMatch(progress: boolean): Promise<IMatches[] | undefined> {
     const matches = await this.matchesModel.findAll({
       where: { inProgress: progress },
       include: [{ model: Teams, as: 'homeTeam', required: true, attributes: ['teamName'] },

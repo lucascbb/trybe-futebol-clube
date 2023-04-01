@@ -23,4 +23,10 @@ router.patch(
   (req: Request, res: Response) => matchesController.editMatch(req, res),
 );
 
+router.post(
+  '/',
+  middlewareToken,
+  (req: Request, res: Response) => matchesController.addMatch(req, res),
+);
+
 export default router;

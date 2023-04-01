@@ -37,4 +37,10 @@ export default class MatchesService {
       { where: { id } },
     );
   }
+
+  async addMatch(newMatch: any) {
+    const match = { ...newMatch, inProgress: true };
+    await this.matchesModel.create(match);
+    return this.matchesModel.findOne({ order: [['createdAt', 'DESC']] });
+  }
 }

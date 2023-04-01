@@ -22,4 +22,11 @@ export default class MatchesService {
     });
     return matches as IMatches[];
   }
+
+  async finishMatch(id: number) {
+    await this.matchesModel.update(
+      { inProgress: true },
+      { where: { id } },
+    );
+  }
 }

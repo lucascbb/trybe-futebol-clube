@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import MatchController from '../controllers/matchesController';
 import MatcheService from '../services/matchesService';
 import MatchModel from '../models/MatchesModel';
-import tokenMiddleware from '../validations/tokenMiddleware';
+import middlewareToken from '../validations/tokenMiddleware';
 
 const router = Router();
 
@@ -11,15 +11,13 @@ const matchesController = new MatchController(matchesService);
 
 router.get('/', (req: Request, res: Response) => matchesController.getAllMatches(req, res));
 
-router.post(
+router.patch(
   '/:id',
-  tokenMiddleware,
   (req: Request, res: Response) => matchesController.editMatch(req, res),
 );
 
-router.get(
+router.patch(
   '/:id/finish',
-  tokenMiddleware,
   (req: Request, res: Response) => matchesController.finishMatch(req, res),
 );
 

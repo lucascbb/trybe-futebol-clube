@@ -3,6 +3,7 @@ import IMatches from '../interface/IMatches';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
 import IEdit from '../interface/IEdit';
+import INewmatch from '../interface/INewmatch';
 
 export default class MatchesService {
   constructor(private matchesModel:ModelStatic<Matches>) {}
@@ -38,7 +39,7 @@ export default class MatchesService {
     );
   }
 
-  async addMatch(newMatch: any) {
+  async addMatch(newMatch: INewmatch) {
     const match = { ...newMatch, inProgress: true };
     const created = await this.matchesModel.create(match);
     return this.matchesModel.findOne({ where: { id: created.dataValues.id } });

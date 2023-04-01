@@ -30,6 +30,6 @@ export default class MatchesController {
     const { id } = req.params;
 
     await this.matchService.editMatch(Number(id), updateGoals);
-    return res.status(200).json();
+    return res.status(200).json({ message: 'Edited' });
   }
 }

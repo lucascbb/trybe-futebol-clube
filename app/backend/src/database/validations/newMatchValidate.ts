@@ -1,6 +1,6 @@
 import INewmatch from '../interface/INewmatch';
 
-export const validateMatch = (match: INewmatch) => {
+export const validateMatch = (match: object) => {
   if (match.homeTeamId === match.awayTeamId) {
     return { status: 422, message: 'It is not possible to create a match with two equal teams' };
   }

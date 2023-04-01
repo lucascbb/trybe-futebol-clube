@@ -13,11 +13,13 @@ router.get('/', (req: Request, res: Response) => matchesController.getAllMatches
 
 router.patch(
   '/:id',
+  middlewareToken,
   (req: Request, res: Response) => matchesController.editMatch(req, res),
 );
 
 router.patch(
   '/:id/finish',
+  middlewareToken,
   (req: Request, res: Response) => matchesController.finishMatch(req, res),
 );
 

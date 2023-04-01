@@ -2,6 +2,7 @@ import { ModelStatic } from 'sequelize';
 import IMatches from '../interface/IMatches';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
+import IEdit from '../interface/IEdit';
 
 export default class MatchesService {
   constructor(private matchesModel:ModelStatic<Matches>) {}
@@ -30,7 +31,7 @@ export default class MatchesService {
     );
   }
 
-  async editMatch(id: number, team: any) {
+  async editMatch(id: number, team: IEdit) {
     await this.matchesModel.update(
       { homeTeamGoals: team.homeTeamGoals, awayTeamGoals: team.awayTeamGoals },
       { where: { id } },

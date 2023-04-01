@@ -25,7 +25,14 @@ export default class MatchesService {
 
   async finishMatch(id: number) {
     await this.matchesModel.update(
-      { inProgress: true },
+      { inProgress: false },
+      { where: { id } },
+    );
+  }
+
+  async editMatch(id: number, team: any) {
+    await this.matchesModel.update(
+      { homeTeamGoals: team.homeTeamGoals, awayTeamGoals: team.awayTeamGoals },
       { where: { id } },
     );
   }

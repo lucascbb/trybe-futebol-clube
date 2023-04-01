@@ -40,7 +40,7 @@ export default class MatchesService {
 
   async addMatch(newMatch: any) {
     const match = { ...newMatch, inProgress: true };
-    await this.matchesModel.create(match);
-    return this.matchesModel.findOne({ order: [['createdAt', 'DESC']] });
+    const created = await this.matchesModel.create(match);
+    return this.matchesModel.findOne({ where: { id: created.dataValues.id } });
   }
 }

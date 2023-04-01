@@ -37,6 +37,6 @@ export default class MatchesController {
     const newMatch = req.body;
 
     const match = await this.matchService.addMatch(newMatch);
-    return res.status(200).json(match);
+    return res.status(201).json(match);
   }
 }

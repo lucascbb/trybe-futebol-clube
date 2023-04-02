@@ -19,6 +19,8 @@ class App {
     this.app.use('/login', usersRoutes);
 
     this.app.use('/matches', matchesRoutes);
+
+    this.app.use('/leaderboard', matchesRoutes);
   }
 
   private config():void {

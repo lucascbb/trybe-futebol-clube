@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import { ModelStatic, Sequelize } from 'sequelize';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
@@ -22,8 +21,7 @@ export default class LeaderBoardService {
           [Sequelize.literal(query.string6), 'goalsOwn'],
           [Sequelize.literal(query.string7), 'goalsBalance'],
           [Sequelize.literal(query.string8), 'efficiency']],
-        group: ['home_team_id', 'name'],
-      }); return lbH;
+        group: ['home_team_id', 'name'] }); return lbH;
     }));
     const resultArr = resultLeaderBoard.flatMap(([obj]) => obj);
     return resultArr as any;

@@ -3,11 +3,9 @@ import LeaderBoardService from '../services/leaderBoardService';
 import ISort from '../interface/ISort';
 
 export default class UsersController {
-  constructor(private leader: LeaderBoardService) {
-    this.leader = leader;
-  }
+  constructor(private leader: LeaderBoardService) { this.leader = leader; }
 
-  async getLeaderBoard(_req: Request, res: Response): Promise<object | void> {
+  async getLeaderBoard(_req: Request, res: Response): Promise<object> {
     const leaderBoard = await this.leader.getLeaderBoard();
 
     const leaderBoardResult = JSON.parse(JSON.stringify(leaderBoard));

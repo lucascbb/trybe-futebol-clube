@@ -6,7 +6,7 @@ import query from '../../utils/queries';
 export default class LeaderBoardService {
   constructor(private leaderModel:ModelStatic<Matches>) {}
 
-  async getLeaderBoard(): Promise<any> {
+  async getLeaderBoard(): Promise<object> {
     const resultLeaderBoard = await Promise.all(query.ids.map(async (ele) => {
       const lbH = await this.leaderModel.findAll({
         where: { homeTeamId: ele, inProgress: 0 },
@@ -24,6 +24,6 @@ export default class LeaderBoardService {
         group: ['home_team_id', 'name'] }); return lbH;
     }));
     const resultArr = resultLeaderBoard.flatMap(([obj]) => obj);
-    return resultArr as any;
+    return resultArr as object;
   }
 }

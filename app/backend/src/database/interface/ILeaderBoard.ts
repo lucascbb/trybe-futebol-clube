@@ -1,12 +1,12 @@
 export default interface ILeaderBoard {
   name: string,
-  totalPoints: number | string,
-  totalGames: number | string,
-  totalVictories: number | string,
-  totalDraws: number | string,
-  totalLosses: number | string,
-  goalsFavor: number | string,
-  goalsOwn: number | string,
-  goalsBalance?: number | string,
-  efficiency?: number | string
+  totalPoints: number,
+  totalGames: number,
+  totalVictories: number,
+  totalDraws: number,
+  totalLosses: number,
+  goalsFavor: number,
+  goalsOwn: number,
+  goalsBalance: string | number,
+  efficiency: string | number,
 }

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import LeaderBoardService from '../services/leaderBoardService';
+import ISort from '../interface/ISort';
 
 export default class UsersController {
   constructor(private leader: LeaderBoardService) {
@@ -11,7 +12,7 @@ export default class UsersController {
 
     const c = JSON.parse(JSON.stringify(leaderBoard));
 
-    c.sort((a: any, b: any) => {
+    c.sort((a: ISort, b: ISort) => {
       if (a.totalPoints < b.totalPoints) { return 1; }
       if (a.totalPoints > b.totalPoints) { return -1; }
 
@@ -26,7 +27,7 @@ export default class UsersController {
       return 0;
     });
 
-    // console.log(pessoas);
+    console.log(typeof c[0]);
 
     return res.status(200).json(c);
   }

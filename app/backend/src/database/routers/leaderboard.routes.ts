@@ -1,13 +1,13 @@
 import { Router, Request, Response } from 'express';
-import TeamsController from '../controllers/teamsController';
-import TeamsService from '../services/teamsService';
-import TeamsModel from '../models/TeamsModel';
+import LeaderBoardController from '../controllers/leaderBoardController';
+import LeaderBoardService from '../services/leaderBoardService';
+import LeaderBoardModel from '../models/MatchesModel';
 
 const router = Router();
 
-const teamsService = new TeamsService(TeamsModel);
-const teamsController = new TeamsController(teamsService);
+const leaderBoardService = new LeaderBoardService(LeaderBoardModel);
+const boardController = new LeaderBoardController(leaderBoardService);
 
-router.get('/home', (req: Request, res: Response) => teamsController.getAllTeams(req, res));
+router.get('/home', (req: Request, res: Response) => boardController.getLeaderBoard(req, res));
 
 export default router;

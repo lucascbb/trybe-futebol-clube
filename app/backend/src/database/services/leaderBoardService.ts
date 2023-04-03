@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { ModelStatic, Sequelize } from 'sequelize';
-// import IMatches from '../interface/IMatches';
+import ILeader from '../interface/ILeaderBoard';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
 import query from '../../utils/queries';
@@ -24,10 +24,10 @@ export default class LeaderBoardService {
           [Sequelize.literal(query.string7), 'goalsBalance'],
           [Sequelize.literal(query.string8), 'efficiency']],
         group: ['home_team_id', 'name'],
-      }); return lbH as any;
+      }); return lbH;
     }));
     const resultArr = resultLeaderBoard.flatMap(([obj]) => obj);
-    console.log(resultLeaderBoard); return resultArr;
+    return resultArr as any;
   }
 }
 // const leaderBoardService = new LeaderBoardService(Matches);

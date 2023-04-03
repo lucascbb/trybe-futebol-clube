@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { ModelStatic, Sequelize } from 'sequelize';
 // import IMatches from '../interface/IMatches';
 import Matches from '../models/MatchesModel';
@@ -19,7 +20,9 @@ export default class LeaderBoardService {
           [Sequelize.literal(query.string4), 'totalDraws'],
           [Sequelize.literal(query.string3), 'totalLosses'],
           [Sequelize.literal(query.string5), 'goalsFavor'],
-          [Sequelize.literal(query.string6), 'goalsOwn']],
+          [Sequelize.literal(query.string6), 'goalsOwn'],
+          [Sequelize.literal('SUM(home_team_goals - away_team_goals)'), 'goalsBalance']
+          [Sequelize.literal('SUM()'), 'efficiency']],
         group: ['home_team_id', 'name'],
       }); return lbH as any;
     }));

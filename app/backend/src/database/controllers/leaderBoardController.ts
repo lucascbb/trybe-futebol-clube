@@ -7,12 +7,12 @@ export default class UsersController {
     this.leader = leader;
   }
 
-  async getLeaderBoard(req: Request, res: Response): Promise<object | void> {
+  async getLeaderBoard(_req: Request, res: Response): Promise<object | void> {
     const leaderBoard = await this.leader.getLeaderBoard();
 
-    const c = JSON.parse(JSON.stringify(leaderBoard));
+    const leaderBoardResult = JSON.parse(JSON.stringify(leaderBoard));
 
-    c.sort((a: ISort, b: ISort) => {
+    leaderBoardResult.sort((a: ISort, b: ISort) => {
       if (a.totalPoints < b.totalPoints) { return 1; }
       if (a.totalPoints > b.totalPoints) { return -1; }
 
@@ -27,8 +27,6 @@ export default class UsersController {
       return 0;
     });
 
-    console.log(typeof c[0]);
-
-    return res.status(200).json(c);
+    return res.status(200).json(leaderBoardResult);
   }
 }

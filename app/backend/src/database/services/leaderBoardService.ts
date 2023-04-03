@@ -1,6 +1,5 @@
 /* eslint-disable max-lines-per-function */
 import { ModelStatic, Sequelize } from 'sequelize';
-import ILeader from '../interface/ILeaderBoard';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
 import query from '../../utils/queries';
@@ -30,6 +29,3 @@ export default class LeaderBoardService {
     return resultArr as any;
   }
 }
-// const leaderBoardService = new LeaderBoardService(Matches);
-// leaderBoardService.getLeaderBoard();
-// ts-node src/database/services/leaderBoardService.ts

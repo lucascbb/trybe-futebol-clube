@@ -21,13 +21,13 @@ export default class LeaderBoardService {
           [Sequelize.literal(query.string3), 'totalLosses'],
           [Sequelize.literal(query.string5), 'goalsFavor'],
           [Sequelize.literal(query.string6), 'goalsOwn'],
-          [Sequelize.literal('SUM(home_team_goals - away_team_goals)'), 'goalsBalance']
-          [Sequelize.literal('SUM()'), 'efficiency']],
+          [Sequelize.literal(query.string7), 'goalsBalance'],
+          [Sequelize.literal(query.string8), 'efficiency']],
         group: ['home_team_id', 'name'],
       }); return lbH as any;
     }));
     const resultArr = resultLeaderBoard.flatMap(([obj]) => obj);
-    return resultArr;
+    console.log(resultLeaderBoard); return resultArr;
   }
 }
 // const leaderBoardService = new LeaderBoardService(Matches);

@@ -30,8 +30,8 @@ export default class LeaderBoardService {
 
   async getLeaderBoardAway(): Promise<object> {
     const resultLeaderBoard = await Promise.all(queryA.ids.map(async (ele) => {
-      const lbH = await this.leaderModel.findAll({
-        where: { awayTeamId: ele, inProgress: false },
+      const lbA = await this.leaderModel.findAll({
+        where: { awayTeamId: ele, inProgress: 0 },
         include: [{ model: Teams, as: 'awayTeam', attributes: { exclude: ['teamName', 'id'] } }],
         attributes: [[Sequelize.col('awayTeam.team_name'), 'name'],
           [Sequelize.literal(queryA.string1), 'totalPoints'],
@@ -43,7 +43,7 @@ export default class LeaderBoardService {
           [Sequelize.literal(queryA.string6), 'goalsOwn'],
           [Sequelize.literal(queryA.string7), 'goalsBalance'],
           [Sequelize.literal(queryA.string8), 'efficiency']],
-        group: ['away_team_id', 'name'] }); return lbH;
+        group: ['away_team_id', 'name'] }); return lbA;
     }));
     const resultArr = resultLeaderBoard.flatMap(([obj]) => obj);
     return resultArr as object;

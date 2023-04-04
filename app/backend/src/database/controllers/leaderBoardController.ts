@@ -1,30 +1,27 @@
 import { Request, Response } from 'express';
 import LeaderBoardService from '../services/leaderBoardService';
-import ISort from '../interface/ISort';
+import sortFunction from '../../utils/func';
 
 export default class UsersController {
   constructor(private leader: LeaderBoardService) { this.leader = leader; }
 
-  async getLeaderBoard(_req: Request, res: Response): Promise<object> {
-    const leaderBoard = await this.leader.getLeaderBoard();
+  async getLeaderBoardHome(_req: Request, res: Response): Promise<object> {
+    const leaderBoard = await this.leader.getLeaderBoardHome();
 
-    const leaderBoardResult = JSON.parse(JSON.stringify(leaderBoard));
+    const leaderBoardResultHome = JSON.parse(JSON.stringify(leaderBoard));
 
-    leaderBoardResult.sort((a: ISort, b: ISort) => {
-      if (a.totalPoints < b.totalPoints) { return 1; }
-      if (a.totalPoints > b.totalPoints) { return -1; }
+    leaderBoardResultHome.sort(sortFunction);
 
-      if (a.totalVictories < b.totalVictories) { return 1; }
-      if (a.totalVictories > b.totalVictories) { return -1; }
+    return res.status(200).json(leaderBoardResultHome);
+  }
 
-      if (parseInt(a.goalsBalance, 10) < parseInt(b.goalsBalance, 10)) { return 1; }
-      if (parseInt(a.goalsBalance, 10) > parseInt(b.goalsBalance, 10)) { return -1; }
+  async getLeaderBoardAway(_req: Request, res: Response): Promise<object> {
+    const leaderBoard = await this.leader.getLeaderBoardAway();
 
-      if (a.goalsFavor < b.goalsFavor) { return 1; }
-      if (a.goalsFavor > b.goalsFavor) { return -1; }
-      return 0;
-    });
+    const leaderBoardResultAway = JSON.parse(JSON.stringify(leaderBoard));
 
-    return res.status(200).json(leaderBoardResult);
+    leaderBoardResultAway.sort(sortFunction);
+
+    return res.status(200).json(leaderBoardResultAway);
   }
 }

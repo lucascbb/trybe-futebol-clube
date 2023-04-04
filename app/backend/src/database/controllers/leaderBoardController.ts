@@ -20,6 +20,7 @@ export default class UsersController {
     const leaderBoard = await this.leader.getLeaderBoardAway();
 
     const leaderBoardResultAway = JSON.parse(JSON.stringify(leaderBoard));
+    console.log(leaderBoardResultAway);
 
     leaderBoardResultAway.sort(sortLeaderBoard);
 
@@ -45,12 +46,13 @@ export default class UsersController {
         totalLosses: a[i][0].totalLosses + a[i][1].totalLosses,
         goalsFavor: a[i][0].goalsFavor + a[i][1].goalsFavor,
         goalsOwn: a[i][0].goalsOwn + a[i][1].goalsOwn,
-        goalsBalance: parseInt(a[i][0].goalsBalance, 10) + parseInt(a[i][1].goalsBalance, 10),
+        goalsBalance: (parseInt(a[i][0].goalsBalance, 10)
+        + parseInt(a[i][1].goalsBalance, 10)).toString(),
         efficiency: (((a[i][0].totalPoints + a[i][1].totalPoints)
         / ((a[i][0].totalGames + a[i][1].totalGames) * 3)) * 100).toFixed(2),
-      }; resu.push(ob); console.log(resu);
+      }; resu.push(ob);
     }
-
+    resu.sort(sortLeaderBoard);
     return res.status(200).json(resu);
   }
 }

@@ -1,8 +1,9 @@
-import { ModelStatic, Sequelize } from 'sequelize';
+import { ModelStatic, Sequelize, Op } from 'sequelize';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
 import queryH from '../../utils/queriesHome';
 import queryA from '../../utils/queriesAway';
+import query from '../../utils/queries';
 
 export default class LeaderBoardService {
   constructor(private leaderModel:ModelStatic<Matches>) {}
@@ -29,7 +30,7 @@ export default class LeaderBoardService {
   }
 
   async getLeaderBoardAway(): Promise<object> {
-    const resultLeaderBoard = await Promise.all(queryA.ids.map(async (ele) => {
+    const resultLeaderBoard = await Promise.all(queryH.ids.map(async (ele) => {
       const lbA = await this.leaderModel.findAll({
         where: { awayTeamId: ele, inProgress: 0 },
         include: [{ model: Teams, as: 'awayTeam', attributes: { exclude: ['teamName', 'id'] } }],
@@ -47,5 +48,16 @@ export default class LeaderBoardService {
     }));
     const resultArr = resultLeaderBoard.flatMap(([obj]) => obj);
     return resultArr as object;
+  }
+
+  async getLeaderBoard(): Promise<object> {
+    const lbA = await this.leaderModel.findAll({
+      where: { inProgress: 0, [Op.or]: [{ homeTeamId: 4 }, { awayTeamId: 4 }] },
+      include: [{ model: Teams, as: 'homeTeam', attributes: { exclude: ['teamName', 'id'] } },
+        { model: Teams, as: 'awayTeam', attributes: { exclude: ['teamName', 'id'] } }],
+      attributes: [[Sequelize.literal(query.string5 + query.string5), 'goalsFavor']],
+      group: ['away_team_id'],
+    });
+    return lbA;
   }
 }

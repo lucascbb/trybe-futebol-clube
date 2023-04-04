@@ -23,8 +23,6 @@ const string8 = `ROUND((SUM(CASE WHEN away_team_goals > home_team_goals
     THEN 3 WHEN away_team_goals = home_team_goals THEN 1 ELSE 0 END) / 
     (COUNT(away_team_id)*3)) * 100, 2)`;
 
-const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-const query = { string1, string2, string3, string4, string5, string6, string7, string8, ids };
+const query = { string1, string2, string3, string4, string5, string6, string7, string8 };
 
 export default query;

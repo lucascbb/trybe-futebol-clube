@@ -12,4 +12,6 @@ router.get('/home', (req: Request, res: Response) => boardController.getLeaderBo
 
 router.get('/away', (req: Request, res: Response) => boardController.getLeaderBoardAway(req, res));
 
+router.get('/', (req: Request, res: Response) => boardController.getLeaderBoard(req, res));
+
 export default router;

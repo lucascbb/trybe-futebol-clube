@@ -1,6 +1,6 @@
 import ISort from '../database/interface/ISort';
 
-const sortFunction = (a: ISort, b: ISort) => {
+const sortLeaderBoard = (a: ISort, b: ISort) => {
   if (a.totalPoints < b.totalPoints) { return 1; }
   if (a.totalPoints > b.totalPoints) { return -1; }
 
@@ -15,4 +15,4 @@ const sortFunction = (a: ISort, b: ISort) => {
   return 0;
 };
 
-export default sortFunction;
+export default sortLeaderBoard;

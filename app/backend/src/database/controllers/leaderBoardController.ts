@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import LeaderBoardService from '../services/leaderBoardService';
-import sortFunction from '../../utils/func';
+import sortLeaderBoard from '../../utils/sortLeaderBoard';
 
 export default class UsersController {
   constructor(private leader: LeaderBoardService) { this.leader = leader; }
@@ -10,7 +10,7 @@ export default class UsersController {
 
     const leaderBoardResultHome = JSON.parse(JSON.stringify(leaderBoard));
 
-    leaderBoardResultHome.sort(sortFunction);
+    leaderBoardResultHome.sort(sortLeaderBoard);
 
     return res.status(200).json(leaderBoardResultHome);
   }
@@ -20,7 +20,7 @@ export default class UsersController {
 
     const leaderBoardResultAway = JSON.parse(JSON.stringify(leaderBoard));
 
-    leaderBoardResultAway.sort(sortFunction);
+    leaderBoardResultAway.sort(sortLeaderBoard);
 
     return res.status(200).json(leaderBoardResultAway);
   }

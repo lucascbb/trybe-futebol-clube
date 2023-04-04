@@ -1,8 +1,8 @@
-/* eslint-disable max-lines-per-function */
 import { Request, Response } from 'express';
 import LeaderBoardService from '../services/leaderBoardService';
 import sortLeaderBoard from '../../utils/sortLeaderBoard';
 import forLoop from '../../utils/forloop';
+import ILeaderBoard from '../interface/ILeaderBoard';
 
 export default class UsersController {
   constructor(private leader: LeaderBoardService) { this.leader = leader; }
@@ -31,8 +31,8 @@ export default class UsersController {
     const leaderBoardH = JSON.parse(JSON.stringify(await this.leader.getLeaderBoardHome()));
     const leaderBoardA = JSON.parse(JSON.stringify(await this.leader.getLeaderBoardAway()));
 
-    const arrLeaderBoard = leaderBoardA.map((ele:any) => leaderBoardH.concat(leaderBoardA)
-      .filter((ele2:any) => ele2.name === ele.name));
+    const arrLeaderBoard = leaderBoardA.map((ele:ILeaderBoard) => leaderBoardH.concat(leaderBoardA)
+      .filter((ele2:ILeaderBoard) => ele2.name === ele.name));
 
     const leaderBoardResult = forLoop(leaderBoardH.length, arrLeaderBoard);
 

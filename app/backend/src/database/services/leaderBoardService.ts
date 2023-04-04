@@ -1,9 +1,8 @@
-import { ModelStatic, Sequelize, Op } from 'sequelize';
+import { ModelStatic, Sequelize } from 'sequelize';
 import Matches from '../models/MatchesModel';
 import Teams from '../models/TeamsModel';
 import queryH from '../../utils/queriesHome';
 import queryA from '../../utils/queriesAway';
-import query from '../../utils/queries';
 
 export default class LeaderBoardService {
   constructor(private leaderModel:ModelStatic<Matches>) {}

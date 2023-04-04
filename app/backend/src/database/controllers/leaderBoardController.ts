@@ -31,10 +31,10 @@ export default class UsersController {
     const leaderBoardH = JSON.parse(JSON.stringify(await this.leader.getLeaderBoardHome()));
     const leaderBoardA = JSON.parse(JSON.stringify(await this.leader.getLeaderBoardAway()));
 
-    const a = leaderBoardA.map((ele:any) => leaderBoardH.concat(leaderBoardA)
+    const arrLeaderBoard = leaderBoardA.map((ele:any) => leaderBoardH.concat(leaderBoardA)
       .filter((ele2:any) => ele2.name === ele.name));
 
-    const leaderBoardResult = forLoop(leaderBoardH.length, a);
+    const leaderBoardResult = forLoop(leaderBoardH.length, arrLeaderBoard);
 
     leaderBoardResult.sort(sortLeaderBoard);
     return res.status(200).json(leaderBoardResult);

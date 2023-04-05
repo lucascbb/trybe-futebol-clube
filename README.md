@@ -54,22 +54,27 @@ O projeto foi construido utilizando as tecnologias:
   `cd trybe-futebol-clube`
 
   #### 3 - Instale as dependências do projeto utilizando o seguinte comando:
-  `npm install`
+  `npm install` 
+  
+  #### 4 - Acesse a pasta backend/:
+  `cd app/` e `cd backend/`
 
-  #### 4 - Rode o comando npm run build na pasta do back-end para fazer o build da aplicação;
+  #### 5 - Rode o comando npm run build na pasta do back-end para fazer obuild da aplicação;
   `npm run build`
+  
+  #### 6 - Volte para app/:
+  `cd ..`
 
-  #### 5 - Suba a aplicação do compose, utilizando:
-  `npm run compose:up` 
-
-  #### 5.1 - Caso queira descer a aplicacao do compose, utilize:
-  `npm run compose:down`
-
-  #### 6 - Rode o backend na porta 3001:
-  `npm run dev`
-
-  #### 7 - Rode o frontend na porta 3000:
-  `npm start`
+  #### 7 - Suba a aplicação do compose, utilizando:  
+  `npm run compose:up`
+  
+  #### 8 - Rode o backend na pota 3001 usando a extensao Docker
+  `code .` abra a extensao e clique com botao direito no container `app_backend` e depois clique em `view logs`
+  
+  #### 9 - Rode o frontend na porta 3000:
+  Abra outro terminal e rode `cd app/`, `cd frontend/` e `npm start`
+  
+  #### 10 - Pronto para testar os endpoints e o fronend
 
 </details>
 <br />

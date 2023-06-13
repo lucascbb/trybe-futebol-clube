@@ -140,11 +140,3 @@ Obs.: As rotas incluem validacoes caso haja algum tipo de dado invalido, se houv
 </details>
 <br />
 
-### 29 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
-<br />
-
-# Requisitos Bônus
-
-### 30 - (Bônus) Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
-<br />
-

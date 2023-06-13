@@ -31,7 +31,7 @@ const Header = ({
         {
           (logged)
             ? (
-              <button type="button" onClick={ () => logoff() }>
+              <button type="button" onClick={ () => logoff() }  className='logoutBTN'>
                 Sair
                 <img src={ exitToAppImg } alt="Sair do aplicativo" />
               </button>
